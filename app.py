@@ -1,16 +1,14 @@
 import web
 
 urls = (
-    '/(.*)', 'hello'
+    '/', 'Index'
 )
 app = web.application(urls, globals())
 wsgiapp = app.wsgifunc() # Prepara la webapp para funcionar con Gunicorn
 
-class hello:
-    def GET(self, name):
-        if not name:
-            name = 'World'
-        return 'Hello, ' + name + '!'
+class Index:
+    def GET(self):
+        return 'Hola desde Heroku!'
 
 if __name__ == "__main__":
     app.run()
